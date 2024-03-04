@@ -11,4 +11,7 @@ class OnBoardingUseCase @Inject constructor(private val domainRepositoryImpl: Do
     fun skipPage(): OnBoardingConstModel {
         return domainRepositoryImpl.skipPage()
     }
+    fun initialize(){
+        domainRepositoryImpl.initalizeOnboarding()
+    }
 }

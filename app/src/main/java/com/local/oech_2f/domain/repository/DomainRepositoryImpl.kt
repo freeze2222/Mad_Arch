@@ -10,10 +10,6 @@ class DomainRepositoryImpl @Inject constructor() : DomainRepository {
         lateinit var queue: List<OnBoardingConstModel>
     }
 
-    init {
-        queue = ConstantsProvider.provideConstants().getOnboardingData()
-    }
-
     override fun nextPage(): OnBoardingConstModel {
         queue = queue.drop(1)
         return queue[0]
@@ -22,5 +18,9 @@ class DomainRepositoryImpl @Inject constructor() : DomainRepository {
     override fun skipPage(): OnBoardingConstModel {
         queue.dropWhile { queue.size != 1 }
         return queue[0]
+    }
+
+    override fun initalizeOnboarding(){
+        queue = ConstantsProvider.provideConstants().getOnboardingData()
     }
 }

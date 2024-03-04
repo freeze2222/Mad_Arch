@@ -12,22 +12,25 @@ import javax.inject.Inject
 @HiltViewModel
 class OnBoardingViewModel @Inject constructor(private val useCase: OnBoardingUseCase) :
     ViewModel() {
-    private val _state = MutableStateFlow(OnBoardingConstModel())
+    private val _state = MutableStateFlow(OnBoardingState())
 
-    val state: StateFlow<OnBoardingConstModel>
+    val state: StateFlow<OnBoardingState>
         get() = _state.asStateFlow()
 
+    init {
+        useCase.initialize()
+    }
     fun nextPage() {
-        val queue = useCase.nextPage()
+        val queue = OnBoardingState().deserialize(useCase.nextPage().serialize())
         emit(queue)
     }
 
     fun skipPage() {
-        val queue = useCase.skipPage()
+        val queue = OnBoardingState().deserialize(useCase.skipPage().serialize())
         emit(queue)
     }
 
-    private fun emit(queue: OnBoardingConstModel) {
+    private fun emit(queue: OnBoardingState) {
         _state.tryEmit(queue)
     }
 

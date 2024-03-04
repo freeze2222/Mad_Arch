@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.local.oech_2f.data.models.OnBoardingConstModel
 import com.local.oech_2f.data.utils.Constants
 import com.local.oech_2f.ui.composable.OechButton
 
@@ -44,7 +43,7 @@ fun OnBoardingScreen(navController: NavHostController) {
 
 @Composable
 fun OnBoardingScreenContent(
-    state: State<OnBoardingConstModel>, viewModel: OnBoardingViewModel, navController: NavHostController
+    state: State<OnBoardingState>, viewModel: OnBoardingViewModel, navController: NavHostController
 ) {
     Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
         Column(
