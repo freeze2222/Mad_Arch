@@ -91,7 +91,7 @@ fun OnBoardingScreenContent(
                     }
 
                     Spacer(Modifier.width(110.dp))
-                    OechButton(text = "Next") {
+                    OechButton(text = "Next", false) {
                         viewModel.nextPage()
                     }
                 }
